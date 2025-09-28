@@ -68,13 +68,13 @@ Step 9: create database
 sudo mysql -u root -p
 
 in MySQL prompt:
-
+```
 CREATE DATABASE atleticx;
 CREATE USER 'atleticx_user'@'localhost' IDENTIFIED BY 'your_password';
 GRANT ALL PRIVILEGES ON atleticx.* TO 'atleticx_user'@'localhost';
 FLUSH PRIVILEGES;
 EXIT;
-
+```
 <br>
 
 Step 10: Configure Database Connection;
