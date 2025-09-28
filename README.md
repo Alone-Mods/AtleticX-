@@ -3,7 +3,9 @@
 STEP :1<br>
 
 UPDATE SYSTEM<br>
-```sudo apt update && sudo apt upgrade -y```
+```
+sudo apt update && sudo apt upgrade -y
+```
 
 Step 2: Install Apache<br>
 ```
@@ -21,7 +23,9 @@ sudo systemctl enable mysql
 
 Step 4: Secure MySQL<br>
 
-```sudo mysql_secure_installation```
+```
+sudo mysql_secure_installation
+```
 
 Answer the prompts:
 
@@ -32,7 +36,9 @@ Remove test database: ```yes```<br>
 Reload privileges:``` yes```<br>
 Step 5: Install PHP<br>
 
-```sudo apt install php php-mysql php-mbstring php-gd php-xml php-curl libapache2-mod-php -y```
+```
+sudo apt install php php-mysql php-mbstring php-gd php-xml php-curl libapache2-mod-php -y
+```
 
 Step 6: Enable Apache Modules <br>
 ```
