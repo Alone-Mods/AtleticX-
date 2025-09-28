@@ -1,76 +1,93 @@
-# AtleticX - College Sports Management System
+### Installation <br>
+### Installation <br>
+STEP :1<br>
 
-<div align="center">
-  <h1>🏃‍♂️ AtleticX 🏃‍♀️</h1>
-  <p><strong>A Complete Sports Management Solution for Colleges</strong></p>
-  <p>Manage sports enrollments, track team members, and organize athletic activities</p>
-</div>
+UPDATE SYSTEM<br>
+```sudo apt update && sudo apt upgrade -y```
 
----
+Step 2: Install Apache<br>
+```
+sudo apt install apache2 -y
+sudo systemctl start apache2
+sudo systemctl enable apache2
+```
+Step 3:INSTALL MYSQL<br>
 
-## 📋 Table of Contents
+```
+sudo apt install mysql-server -y
+sudo systemctl start mysql
+sudo systemctl enable mysql
+```
 
-- [About](#-about)
-- [Features](#-features)
-- [Complete Installation Guide](#-complete-installation-guide)
-  - [Option 1: XAMPP (Easiest for Beginners)](#option-1-xampp-easiest-for-beginners)
-  - [Option 2: Manual LAMP Installation](#option-2-manual-lamp-installation)
-- [Post-Installation Setup](#-post-installation-setup)
-- [How to Use](#-how-to-use)
-- [Troubleshooting](#-troubleshooting)
-- [Support](#-support)
+Step 4: Secure MySQL<br>
 
-## 📖 About
+```sudo mysql_secure_installation```
 
-AtleticX is a web-based sports management system designed for colleges to manage their athletic programs efficiently. Students can register, enroll in different sports, view team members, and manage their profiles.
+Answer the prompts:
 
-## ✨ Features
+Set root password:``` yes```<br>
+Remove anonymous users: ```yes```<br>
+Disallow root login remotely: ```yes```<br>
+Remove test database: ```yes```<br>
+Reload privileges:``` yes```<br>
+Step 5: Install PHP<br>
 
-- 🔐 **Secure Authentication** - Login and registration system
-- 🏅 **5 Sports** - Football, Cricket, Basketball, Volleyball, Badminton
-- 👥 **Team Management** - View enrolled members in each sport
-- 📝 **Easy Enrollment** - One-click sport registration with position selection
-- 👤 **Profile Management** - Update personal information and photos
-- 📱 **Responsive Design** - Works on all devices
-- 🎨 **Modern UI** - Attractive red and black theme
+```sudo apt install php php-mysql php-mbstring php-gd php-xml php-curl libapache2-mod-php -y```
 
-## 🚀 Complete Installation Guide
+Step 6: Enable Apache Modules <br>
+```
+sudo a2enmod rewrite
+sudo systemctl restart apache2
+```
 
-### Prerequisites
+Step 7: Download AtleticX<br>
+```
+cd /var/www/html
+sudo wget https://github.com/Alone-Mods/AtleticX/AtleticX.zip
+sudo apt install unzip -y
+sudo unzip AtleticX.zip -d atleticx
+sudo rm AtleticX.zip
+```
 
-- A computer with Windows, Linux, or macOS
-- Internet connection (for downloading software)
-- Basic knowledge of using a web browser
+Step 8:Set permission<br>
+```
+sudo chown -R www-data:www-data /var/www/html/atleticx
+sudo chmod -R 755 /var/www/html/atleticx
+sudo chmod -R 775 /var/www/html/atleticx/uploads
+```
+<br>
 
----
+Step 9: create database 
 
-## Option 1: XAMPP (Easiest for Beginners)
+sudo mysql -u root -p
 
-### Step 1: Download and Install XAMPP
+in MySQL prompt:
 
-1. **Download XAMPP**
-   - Visit: https://www.apachefriends.org/download.html
-   - Choose your operating system:
-     - Windows: Download `xampp-windows-x64-8.2.12-0-VS16-installer.exe`
-     - macOS: Download `xampp-osx-8.2.12-0-installer.dmg`
-     - Linux: Download `xampp-linux-x64-8.2.12-0-installer.run`
+CREATE DATABASE atleticx;
+CREATE USER 'atleticx_user'@'localhost' IDENTIFIED BY 'your_password';
+GRANT ALL PRIVILEGES ON atleticx.* TO 'atleticx_user'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;
 
-2. **Install XAMPP**
-   
-   **For Windows:**
-   - Run the installer as Administrator
-   - If Windows Defender appears, click "More info" → "Run anyway"
-   - Click "Next" through the installation wizard
-   - Select components: ✅ Apache, ✅ MySQL, ✅ PHP, ✅ phpMyAdmin
-   - Installation folder: `C:\xampp` (default)
-   - Complete installation
+<br>
 
-   **For macOS:**
-   - Open the .dmg file
-   - Drag XAMPP to Applications folder
-   - Open XAMPP from Applications
+Step 10: Configure Database Connection;
+```
+sudo nano /var/www/html/atleticx/config/database.php
+```
+update credentials :
+```
+$host = 'localhost';
+$db = 'atleticx';
+$user = 'atleticx_user';
+$pass = 'your_password';
+```
+Step 11: Run setup 
+```
+http://localhost/atleticx/setup.php
+```
 
-   **For Linux:**
-   ```bash
-   chmod +x xampp-linux-x64-8.2.12-0-installer.run
-   sudo ./xampp-linux-x64-8.2.12-0-installer.run
+then delete setup 
+```
+sudo rm /var/www/html/atleticx/setup.php
+```
