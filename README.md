@@ -97,3 +97,6 @@ then delete setup
 ```
 sudo rm /var/www/html/atleticx/setup.php
 ```
+
+
+http://localhost/AtleticX/test_connection.php
