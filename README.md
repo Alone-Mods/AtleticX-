@@ -113,7 +113,7 @@ atleticx/<br>
 ├── config/<br>
 │   └── database.php                # Database connection setup<br>
 │
-├── includes/
+├── includes/<br>
 │   ├── auth.php                    # Authentication helper<br>
 │   └── functions.php               # Common reusable functions<br>
 │<br>
