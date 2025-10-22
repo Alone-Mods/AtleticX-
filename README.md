@@ -30,7 +30,6 @@ It supports **five sports** — ⚽ Football, 🏏 Cricket, 🏀 Basketball, �
 1. **Download or clone** the repository:  
    ```bash
    git clone https://github.com/yourusername/AtleticX.git
-
 2. Extract the AtleticX project folder into your XAMPP htdocs directory:
 
 C:\xampp\htdocs\AtleticX
@@ -55,9 +54,9 @@ C:\xampp\htdocs\AtleticX
 4️⃣ Create the Database
 
 1. Open the XAMPP terminal and :
-
-mysql -u root -e "CREATE DATABASE IF NOT EXISTS atleticx CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;"<br>
-mysql -u root atleticx < "C:\xampp\htdocs\AtleticX\database_schema.sql"<br>
+2. ```bash
+   mysql -u root -e "CREATE DATABASE IF NOT EXISTS atleticx CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;"
+   mysql -u root atleticx < "C:\xampp\htdocs\AtleticX\database_schema.sql"
 
 ---
 
@@ -65,18 +64,17 @@ mysql -u root atleticx < "C:\xampp\htdocs\AtleticX\database_schema.sql"<br>
 
 Visit:
 
-http://localhost/AtleticX/test_connection.php
-
+<a href="http://localhost/AtleticX/test_connection.php">ATLETICX~TEST</a><br>
+Click Here to see If the connection is Established<br>
 If the connection is successful ✅, proceed to the next step.
-
 
 ---
 
 6️⃣ Run the Application
 
-Open your browser and go to:
 
-http://localhost/AtleticX/
+<a href="http://localhost/AtleticX/">AtleticX </a><br>
+
 
 🎉 AtleticX is now running successfully!
 
