@@ -1,102 +1,176 @@
-### Installation <br>
-### Installation <br>
-STEP :1<br>
 
-UPDATE SYSTEM<br>
-```
-sudo apt update && sudo apt upgrade -y
-```
 
-Step 2: Install Apache<br>
-```
-sudo apt install apache2 -y
-sudo systemctl start apache2
-sudo systemctl enable apache2
-```
-Step 3:INSTALL MYSQL<br>
+---
 
-```
-sudo apt install mysql-server -y
-sudo systemctl start mysql
-sudo systemctl enable mysql
-```
+# 🏅 AtleticX — College Sports Team Management Web App
 
-Step 4: Secure MySQL<br>
+AtleticX is a **college sports team management** web application built using the **LAMP stack** (Linux, Apache, MySQL, PHP).  
+It supports **five sports** — ⚽ Football, 🏏 Cricket, 🏀 Basketball, 🏸 Badminton, and 🏐 Volleyball.
 
-```
-sudo mysql_secure_installation
-```
+---
 
-Answer the prompts:
+## 🚀 Features
+- 🧑‍🎓 User registration for preferred sports  
+- 🏆 Manage multiple sports teams  
+- 📋 Player and match data management  
+- 🔐 Secure login, registration, and password reset  
+- 💻 Built on a simple and scalable **PHP + MySQL** architecture  
 
-Set root password:``` yes```<br>
-Remove anonymous users: ```yes```<br>
-Disallow root login remotely: ```yes```<br>
-Remove test database: ```yes```<br>
-Reload privileges:``` yes```<br>
-Step 5: Install PHP<br>
+---
 
-```
-sudo apt install php php-mysql php-mbstring php-gd php-xml php-curl libapache2-mod-php -y
-```
+## ⚙️ Steps To Run This Project
 
-Step 6: Enable Apache Modules <br>
-```
-sudo a2enmod rewrite
-sudo systemctl restart apache2
-```
+### 1️⃣ Install Requirements
+- [Visual Studio Code](https://code.visualstudio.com/) — for code editing  
+- [XAMPP](https://www.apachefriends.org/download.html) — for Apache & MySQL servers  
 
-Step 7: Download AtleticX<br>
-```
-cd /var/www/html
-sudo wget https://github.com/Alone-Mods/AtleticX/AtleticX.zip
-sudo apt install unzip -y
-sudo unzip AtleticX.zip -d atleticx
-sudo rm AtleticX.zip
-```
+---
 
-Step 8:Set permission<br>
-```
-sudo chown -R www-data:www-data /var/www/html/atleticx
-sudo chmod -R 755 /var/www/html/atleticx
-sudo chmod -R 775 /var/www/html/atleticx/uploads
-```
-<br>
+### 2️⃣ Setup the Project
+1. **Download or clone** the repository:  
+   ```bash
+   git clone https://github.com/yourusername/AtleticX.git
 
-Step 9: create database 
+2. Extract the AtleticX project folder into your XAMPP htdocs directory:
 
-sudo mysql -u root -p
+C:\xampp\htdocs\AtleticX
 
-in MySQL prompt:
-```
-CREATE DATABASE atleticx;
-CREATE USER 'atleticx_user'@'localhost' IDENTIFIED BY 'your_password';
-GRANT ALL PRIVILEGES ON atleticx.* TO 'atleticx_user'@'localhost';
-FLUSH PRIVILEGES;
-EXIT;
-```
-<br>
 
-Step 10: Configure Database Connection;
-```
-sudo nano /var/www/html/atleticx/config/database.php
-```
-update credentials :
-```
-$host = 'localhost';
-$db = 'atleticx';
-$user = 'atleticx_user';
-$pass = 'your_password';
-```
-Step 11: Run setup 
-```
-http://localhost/atleticx/setup.php
-```
 
-then delete setup 
-```
-sudo rm /var/www/html/atleticx/setup.php
-```
 
+---
+
+3️⃣ Start the Server
+
+1. Open XAMPP Control Panel
+
+
+2. Start Apache and MySQL
+
+
+
+
+---
+
+4️⃣ Create the Database
+
+1. Open the XAMPP terminal and type:
+
+mysql -u root
+create database Atleticx;
+exit;
+
+
+2. Import the database schema file:
+
+/AtleticX/database_schema.sql
+
+(You can use phpMyAdmin or MySQL CLI)
+
+
+
+
+---
+
+5️⃣ Test the Database Connection
+
+Visit:
 
 http://localhost/AtleticX/test_connection.php
+
+If the connection is successful ✅, proceed to the next step.
+
+
+---
+
+6️⃣ Run the Application
+
+Open your browser and go to:
+
+http://localhost/AtleticX/
+
+🎉 AtleticX is now running successfully!
+
+
+---
+
+🧰 Tech Stack
+
+Component	Technology
+
+Frontend	HTML, CSS, JavaScript
+Backend	PHP
+Database	MySQL
+Server	Apache (via XAMPP)
+
+
+
+---
+
+📁 Project Structure
+
+atleticx/<br>
+├── config/<br>
+│   └── database.php                # Database connection setup<br>
+│
+├── includes/
+│   ├── auth.php                    # Authentication helper<br>
+│   └── functions.php               # Common reusable functions<br>
+│<br>
+├── api/                            # API endpoints for app functionality<br>
+│   ├── login.php                   # User login<br>
+│   ├── register.php                # User registration<br>
+│   ├── logout.php                  # Logout functionality<br>
+│   ├── profile-update.php          # Profile update endpoint<br>
+│   ├── enrollment.php              # Sport enrollment handler<br>
+│   └── password-reset.php          # Password reset logic<br>
+│
+├── assets/<br>
+│   ├── css/<br>
+│   │   └── styles.css              # Stylesheet<br>
+│   └── js/<br>
+│       ├── main.js                 # General scripts<br>
+│       └── sport-functions.js      # Sport-specific JS logic<br>
+│
+├── uploads/<br>
+│   ├── profiles/                   # (create this) for profile images<br>
+│   └── banners/                    # (create this) for sport banners<br>
+│<br>
+├── .htaccess                       # Rewrite and routing configuration<br>
+├── setup.php                       # Initial setup and database import
+│<br>
+├── index.php                       # Homepage<br>
+├── dashboard.php                   # User dashboard<br>
+├── sports.php                      # Sports overview page<br>
+│<br>
+├── football.php                    # Football module<br>
+├── cricket.php                     # Cricket module<br>
+├── basketball.php                  # Basketball module<br>
+├── volleyball.php                  # Volleyball module<br>
+├── badminton.php                   # Badminton module<br>
+│
+├── profile.php                     # View profile<br>
+├── edit-profile.php                # Edit profile page<br>
+├── reset-password.php              # Password reset page<br>
+└── credits.php                     # Credits / About page<br>
+
+<br>
+---
+
+💬 Contributing
+
+Pull requests are welcome!
+If you'd like to contribute, please fork the repo and create a new branch before submitting changes.
+
+
+---
+
+🧑‍💻 Author
+
+AtleticX Project Team
+Built with ❤️ using PHP and MySQL
+
+
+---
+
+---
