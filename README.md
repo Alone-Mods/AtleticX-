@@ -27,10 +27,9 @@ It supports **five sports** — ⚽ Football, 🏏 Cricket, 🏀 Basketball, �
 ---
 
 ### 2️⃣ Setup the Project
-1. **Download or clone** the repository:  
-   ```bash
-   git clone https://github.com/yourusername/AtleticX.git
-2. Extract the AtleticX project folder into your XAMPP htdocs directory:
+1. **Download**<br>
+ Download the Given **Atleticx.zip** file<br>
+ 2.Extract the AtleticX project folder into your XAMPP htdocs directory:
 
 C:\xampp\htdocs\AtleticX
 
