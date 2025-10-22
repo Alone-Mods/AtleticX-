@@ -54,21 +54,10 @@ C:\xampp\htdocs\AtleticX
 
 4️⃣ Create the Database
 
-1. Open the XAMPP terminal and type:
+1. Open the XAMPP terminal and :
 
-mysql -u root
-create database Atleticx;
-exit;
-
-
-2. Import the database schema file:
-
-/AtleticX/database_schema.sql
-
-(You can use phpMyAdmin or MySQL CLI)
-
-
-
+mysql -u root -e "CREATE DATABASE IF NOT EXISTS atleticx CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;"<br>
+mysql -u root atleticx < "C:\xampp\htdocs\AtleticX\database_schema.sql"<br>
 
 ---
 
